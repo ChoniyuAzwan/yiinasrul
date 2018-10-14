@@ -1,0 +1,1 @@
+buat crud : gaji, divisi, agama
