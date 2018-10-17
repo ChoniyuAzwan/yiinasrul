@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Divisi */
+/* @var $model app\models\Gaji */
 
-$this->title = $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Divisi', 'url' => ['index']];
+$this->title = $model->relPegawai->nama;
+$this->params['breadcrumbs'][] = ['label' => 'Gaji', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="divisi-view">
+<div class="gaji-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'nama',
+            // panggil relasi data dari model
+            'relPegawai.nama',
+            // 'idpegawai',
+            'gapok',
+            'tunjab',
+            'transport',
+            'bpjs',
         ],
     ]) ?>
 

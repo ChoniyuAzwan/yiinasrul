@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Divisi */
+/* @var $model app\models\Diklat */
 
-$this->title = $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Divisi', 'url' => ['index']];
+$this->title = $model->relPegawai->nama;
+$this->params['breadcrumbs'][] = ['label' => 'Diklat', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="divisi-view">
+<div class="diklat-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Anda yakin ingin menghapus item ini ?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,7 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'nama',
+            'relPegawai.nama',
+            'relMateri.nama',
+            // 'idpegawai',
+            // 'idmateri',
+            'tempat:ntext',
+            'tgl_mulai',
+            'tgl_akhir',
         ],
     ]) ?>
 

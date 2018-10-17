@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Pegawai */
 
 $this->title = $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Pegawais', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Pegawai', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pegawai-view">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Anda yakin ingin menghapus item ini ?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nip',
             'nama',
             'gender',
-            // panggil
+            // panggil relasi data dari model
             'relAgama.nama',
             'relDivisi.nama',
             'relJabatan.nama',

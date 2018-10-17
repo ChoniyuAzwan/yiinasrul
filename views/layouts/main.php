@@ -49,6 +49,9 @@ AppAsset::register($this);
                     ['label' => 'Agama', 'url' => ['/agama']],
                     ['label' => 'Divisi', 'url' => ['/divisi']],
                     ['label' => 'Jabatan', 'url' => ['/jabatan']],
+                    ['label' => 'Gaji', 'url' => ['/gaji']],
+                    ['label' => 'Materi', 'url' => ['/materi']],
+                    ['label' => 'Diklat', 'url' => ['/diklat']],
                 ],    
             ],
             

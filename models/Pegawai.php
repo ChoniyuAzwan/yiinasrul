@@ -97,7 +97,7 @@ class Pegawai extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDiklats()
+    public function getRelDiklats()
     {
         return $this->hasMany(Diklat::className(), ['idpegawai' => 'id']);
     }

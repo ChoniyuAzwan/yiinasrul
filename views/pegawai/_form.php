@@ -26,19 +26,19 @@ use yii\helpers\ArrayHelper; // untuk menggunakan data array
 
         <?php // $form->field($model, 'idagama')->textInput() 
         // ambil data agama
-        $ar_agama = ArrayHelper::map(Agama::find()->asArray()->All(), 'id', 'nama');
+            $ar_agama = ArrayHelper::map(Agama::find()->asArray()->All(), 'id', 'nama');
         ?>
 
         <?= $form->field($model, 'idagama')->dropDownList($ar_agama, ['prompt' => '-- Pilih Agama --']) ?>
 
         <?php // $form->field($model, 'iddivisi')->textInput() 
-        $ar_divisi = ArrayHelper::map(Divisi::find()->asArray()->All(), 'id', 'nama');
+            $ar_divisi = ArrayHelper::map(Divisi::find()->asArray()->All(), 'id', 'nama');
         ?>
 
         <?= $form->field($model, 'iddivisi')->dropDownList($ar_divisi, ['prompt' => '-- Pilih Divisi --']) ?>
 
         <?php // $form->field($model, 'idjabatan')->textInput() 
-        $ar_jabatan = ArrayHelper::map(Jabatan::find()->asArray()->All(), 'id', 'nama');
+            $ar_jabatan = ArrayHelper::map(Jabatan::find()->asArray()->All(), 'id', 'nama');
         ?>
 
         <?= $form->field($model, 'idjabatan')->dropDownList($ar_jabatan, ['prompt' => '-- Pilih Jabatan --']) ?>
