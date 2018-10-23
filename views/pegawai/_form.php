@@ -8,6 +8,9 @@ use app\models\Agama;
 use app\models\Divisi;
 use app\models\Jabatan;
 use yii\helpers\ArrayHelper; // untuk menggunakan data array
+// gunakan kartik select2 dan datepicker
+use kartik\select2\Select2;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pegawai */
@@ -29,7 +32,18 @@ use yii\helpers\ArrayHelper; // untuk menggunakan data array
             $ar_agama = ArrayHelper::map(Agama::find()->asArray()->All(), 'id', 'nama');
         ?>
 
-        <?= $form->field($model, 'idagama')->dropDownList($ar_agama, ['prompt' => '-- Pilih Agama --']) ?>
+        <?php // $form->field($model, 'idagama')->dropDownList($ar_agama, ['prompt' => '-- Pilih Agama --']) ?>
+
+        <?=
+        $form->field($model, 'idagama')->widget(Select2::classname(), [
+            'data' => $ar_agama,
+            'language' => 'id',
+            'options' => ['placeholder' => '--- Pilih Agama ---'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]);
+        ?>
 
         <?php // $form->field($model, 'iddivisi')->textInput() 
             $ar_divisi = ArrayHelper::map(Divisi::find()->asArray()->All(), 'id', 'nama');
@@ -47,7 +61,18 @@ use yii\helpers\ArrayHelper; // untuk menggunakan data array
     <div class="col-md-6">
         <?= $form->field($model, 'tmp_lahir')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'tgl_lahir')->textInput() ?>
+        <?php // $form->field($model, 'tgl_lahir')->textInput() ?>
+
+        <?=
+        $form->field($model, 'tgl_lahir')->widget(DatePicker::classname(), [
+            'language' => 'id',
+            'options' => ['placeholder' => 'Pilih Tanggal Lahir'],
+            'pluginOptions' => [
+                'format' => 'yyyy-mm-dd',
+                'todayHighlight' => true
+            ],
+        ]);
+        ?>
 
         <?= $form->field($model, 'alamat')->textarea(['rows' => 6]) ?>
 

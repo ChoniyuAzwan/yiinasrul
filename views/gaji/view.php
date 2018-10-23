@@ -28,9 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             // panggil relasi data dari model
+            'relPegawai.nip',
             'relPegawai.nama',
+            // panggil relasi dari relasi pegawai lalu relasi divisi
+            'relPegawai.relDivisi.nama',
+            // panggil relasi dari relasi pegawai lalu relasi divisi
+            'relPegawai.relJabatan.nama',
+
+            // 'id',
             // 'idpegawai',
             'gapok',
             'tunjab',
@@ -39,4 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?php 
+        $total_gaji = $model->gapok + $model->tunjab + $model->transport + $model->bpjs;
+    ?>
+
+    <div class="alert alert-info">
+        Total Gaji : Rp. <?= number_format($total_gaji, 2, ',', '.'); ?>
+    </div>
+    
 </div>

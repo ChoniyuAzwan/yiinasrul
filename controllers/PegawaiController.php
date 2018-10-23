@@ -65,38 +65,37 @@ class PegawaiController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
     public function actionCreate()
     {
         $model = new Pegawai();
-
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        //     return $this->redirect(['view', 'id' => $model->id]);
-        // }
-
-        // return $this->render('create', [
-        //     'model' => $model,
-        // ]);
-
+        /*
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if($model->validate() && !empty($model->fotoFile)) {
-                // upload dokumennya
-                $model->fotoFile = UploadedFile::getInstance($model, 'fotoFile');
-                // tangkap nama file gambar
-                $nama = $model->nip.'.'.$model->fotoFile->extension;
-                // simpan ke field foto
-                $model->foto = $nama;
-                // simpan data
-                $model->save();
-                // simpan fisiknya
-                $model->fotoFile->saveAs('foto/'.$nama);
-            } else {
-                $model->save; //simpan data biasa selain foto
-            }
-                
             return $this->redirect(['view', 'id' => $model->id]);
-            
-            }
+        }
 
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+        */
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //menambahkan method u/ upload dokumen
+            $model->fotoFile = UploadedFile::getInstance($model,'fotoFile');
+            //cek apakah ada file yg diupload / tidak, dan lolos validasi
+            if($model->validate() && !empty($model->fotoFile)){
+                //$nama = $model->nip.'.jpg';
+                //$nama = $model->fotoFile->baseName.'.'.$model->fotoFile->extension;
+                $nama = $model->nip.'.'.$model->fotoFile->extension;
+                $model->foto = $nama; //menyimpan nama file
+                $model->save(); //data lain juga simpan ke db
+                //simpan fisik foto di folder images
+                $model->fotoFile->saveAs('images/'.$nama);
+            }else{
+                $model->save();//simpan data tanpa foto
+            }
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -112,14 +111,33 @@ class PegawaiController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        /*
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+        */
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //menambahkan method u/ upload dokumen
+            $model->fotoFile = UploadedFile::getInstance($model,'fotoFile');
+            //cek apakah ada file yg diupload / tidak, dan lolos validasi
+            if($model->validate() && !empty($model->fotoFile)){
+                //$nama = $model->nip.'.jpg';
+                //$nama = $model->fotoFile->baseName.'.'.$model->fotoFile->extension;
+                $nama = $model->nip.'.'.$model->fotoFile->extension;
+                $model->foto = $nama; //menyimpan nama file
+                $model->save(); //data lain juga simpan ke db
+                //simpan fisik foto di folder images
+                $model->fotoFile->saveAs('images/'.$nama);
+            }else{
+                $model->save();//simpan data tanpa foto
+            }
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        
         return $this->render('update', [
             'model' => $model,
         ]);
+        
     }
 
     /**

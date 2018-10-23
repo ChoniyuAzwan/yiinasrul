@@ -61,11 +61,11 @@ class Pegawai extends \yii\db\ActiveRecord
 
             // tambahan rules
             [['email'], 'email'], // harus berformat email (budi@gmail.com)
-            [['fotofile'], 'file',
+            [['fotoFile'], 'file',
                 'skipOnEmpty' => true,
                 'extensions' => ['png', 'jpg', 'gif', 'jpeg'],
                 'maxSize' => 2048000, // max 2000 KB
-                'minSize' => 102400, // min 100 KB
+                'minSize' => 10240, // min 10 KB
 
             ],
         ];
@@ -90,7 +90,7 @@ class Pegawai extends \yii\db\ActiveRecord
             'telp' => 'Telepon/HP',
             'email' => 'Email',
             'foto' => 'Foto',
-            'fotofile' => 'File Foto',
+            'fotoFile' => 'File Foto',
         ];
     }
 

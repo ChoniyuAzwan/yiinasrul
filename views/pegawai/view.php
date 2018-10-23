@@ -25,27 +25,45 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nip',
-            'nama',
-            'gender',
-            // panggil relasi data dari model
-            'relAgama.nama',
-            'relDivisi.nama',
-            'relJabatan.nama',
-            // 'idagama',
-            // 'iddivisi',
-            // 'idjabatan',
-            'tmp_lahir',
-            'tgl_lahir',
-            'alamat:ntext',
-            'telp',
-            'email:email',
-            'foto',
-        ],
-    ]) ?>
+<div class="row">
+    <div class="col-md-8">
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                'id',
+                'nip',
+                'nama',
+                'gender',
+                // panggil relasi data dari model
+                'relAgama.nama',
+                'relDivisi.nama',
+                'relJabatan.nama',
+                // 'idagama',
+                // 'iddivisi',
+                // 'idjabatan',
+                'tmp_lahir',
+                'tgl_lahir',
+                'alamat:ntext',
+                'telp',
+                'email:email',
+                'foto',
+            ],
+        ]) ?>
+    </div>
+
+    <div class="col-md-4">
+        <?php 
+            if(!empty($model->foto)) {
+        ?>
+                <img src="<?= yii::$app->request->baseurl; ?>/images/<?= $model->foto; ?>" width="80%">
+        <?php  
+            } else {   
+        ?>
+                <img src="<?= yii::$app->request->baseurl; ?>/images/nophoto.png" width="80%">
+        <?php 
+            }
+        ?>        
+    </div>
+</div>
 
 </div>
